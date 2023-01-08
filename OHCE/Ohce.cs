@@ -4,31 +4,41 @@ namespace OHCE;
 
 public class Ohce
 {
-    private readonly ILangue _langue;
-    private readonly PériodeJournée _périodeJournée;
 
-    public Ohce(ILangue langue, PériodeJournée périodeJournée)
-    {
-        _langue = langue;
-        _périodeJournée = périodeJournée;
-    }
+	private readonly ILangue _langue;
+	private readonly DayPeriod _périodeJournée;
 
-    public string Palindrome(string input)
-    {
-        var stringBuilder = 
-            new StringBuilder(_langue.DireBonjour(_périodeJournée));
+	public Ohce(ILangue langue, DayPeriod périodeJournée)
+	{
+		_langue = langue;
+		_périodeJournée = périodeJournée;
+	}
 
-        var reversed = new string(
-            input.Reverse().ToArray()
-        );
+	public string Palindrome(string input)
+	{
+		var reversed = new string(
+			input.Reverse().ToArray()
+		);
 
-        stringBuilder.Append(reversed);
+		var stringBuilder = new StringBuilder(reversed + "\n");
 
-        if (reversed.Equals(input))
-            stringBuilder.Append(_langue.BienDit);
+		if (reversed.Equals(input))
+			stringBuilder.Append(_langue.BienDit);
 
-        stringBuilder.Append(_langue.AuRevoir);
+		return stringBuilder.ToString();
+	}
 
-        return stringBuilder.ToString();
-    }
+	public string DireBonjour()
+	{
+		var stringBuilder = new StringBuilder(_langue.Bonjour(_périodeJournée));
+
+		return stringBuilder.ToString();
+	}
+
+	public string DireAurevoir()
+	{
+		var stringBuilder = new StringBuilder(_langue.AuRevoir);
+
+		return stringBuilder.ToString();
+	}
 }

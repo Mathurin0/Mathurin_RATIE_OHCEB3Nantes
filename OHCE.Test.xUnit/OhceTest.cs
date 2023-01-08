@@ -49,13 +49,13 @@ public class OhceTest
         new LangueFrançaise()
     };
 
-    private static readonly IEnumerable<PériodeJournée> Périodes = new PériodeJournée[]
+    private static readonly IEnumerable<DayPeriod> Périodes = new DayPeriod[]
     {
-        PériodeJournée.Matin, 
-        PériodeJournée.AprèsMidi, 
-        PériodeJournée.Soir, 
-        PériodeJournée.Nuit, 
-        PériodeJournée.Defaut
+        DayPeriod.Morning, 
+        DayPeriod.Afternoon, 
+        DayPeriod.Evening, 
+        DayPeriod.Night, 
+        DayPeriod.Defaut
     };
 
     public static IEnumerable<object[]> LanguesSeules => new CartesianData(Langues);
@@ -66,7 +66,7 @@ public class OhceTest
                           "QUAND l'app démarre " +
                           "ALORS <bonjour> de cette langue à cette période est envoyé")]
     [MemberData(nameof(LanguesEtPériodes))]
-    public void DémarrageTest(ILangue langue, PériodeJournée période)
+    public void DémarrageTest(ILangue langue, DayPeriod période)
     {
         // ETANT DONNE un utilisateur parlant une langue
         // ET que la période de la journée est <période>
@@ -79,7 +79,7 @@ public class OhceTest
         var sortie = ohce.Palindrome(string.Empty);
 
         // ALORS <bonjour> de cette langue à cette période est envoyé
-        Assert.StartsWith(langue.DireBonjour(période), sortie);
+        Assert.StartsWith(langue.Bonjour(période), sortie);
     }
 
     [Theory(DisplayName = "ETANT DONNE un utilisateur parlant une langue" +
