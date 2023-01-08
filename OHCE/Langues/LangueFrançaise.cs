@@ -6,9 +6,9 @@
         public string BienDit => Expressions.Français.BienDit;
 
         /// <inheritdoc />
-        public string DireBonjour(PériodeJournée période)
+        public string Bonjour(DayPeriod période)
         {
-            return période == PériodeJournée.Soir 
+            return période == DayPeriod.Evening 
                 ? Expressions.Français.Bonsoir 
                 : Expressions.Français.Bonjour;
         }

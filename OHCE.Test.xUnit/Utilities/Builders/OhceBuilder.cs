@@ -4,7 +4,7 @@ namespace OHCE.Test.xUnit.Utilities.Builders
 {
     internal class OhceBuilder
     {
-        private PériodeJournée _périodeJournée = PériodeJournée.Defaut;
+        private DayPeriod _périodeJournée = DayPeriod.Defaut;
         private ILangue _langue = new LangueMock();
 
         public static Ohce Default => new OhceBuilder().Build();
@@ -17,7 +17,7 @@ namespace OHCE.Test.xUnit.Utilities.Builders
             return this;
         }
 
-        public OhceBuilder AyantPourPériodeDeLaJournée(PériodeJournée période)
+        public OhceBuilder AyantPourPériodeDeLaJournée(DayPeriod période)
         {
             _périodeJournée = période;
             return this;

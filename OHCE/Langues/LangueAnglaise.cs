@@ -6,7 +6,7 @@
         public string BienDit => Expressions.English.BienDit;
         
         /// <inheritdoc />
-        public string DireBonjour(PériodeJournée période) => Expressions.English.Bonjour;
+        public string Bonjour(DayPeriod période) => Expressions.English.Bonjour;
 
         /// <inheritdoc />
         public string AuRevoir => Expressions.English.AuRevoir;

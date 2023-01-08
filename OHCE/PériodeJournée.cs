@@ -1,11 +1,11 @@
 ﻿namespace OHCE
 {
-    public enum PériodeJournée
+    public enum DayPeriod
     {
         Defaut,
-        Matin,
-        AprèsMidi,
-        Soir,
-        Nuit
+        Morning,
+        Afternoon,
+        Evening,
+        Night
     }
 }
