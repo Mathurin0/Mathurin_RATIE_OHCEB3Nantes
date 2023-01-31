@@ -19,5 +19,5 @@ namespace OHCE.Test.xUnit
             // ALORS on me répond <salutationAttendue>
             Assert.Equal(salutationAttendue, salutation);
         }
-    }
+	}
 }
