@@ -4,11 +4,11 @@
 	{
 		public static DayPeriod ActualPeriod => DateTime.Now.Hour switch
 				{
-					< 6  => DayPeriod.Night,
-					< 12 => DayPeriod.Morning,
-					< 18 => DayPeriod.Afternoon,
-					< 21 => DayPeriod.Evening,
-					_    => DayPeriod.Night
+					< 6  => DayPeriod.Nuit,
+					< 12 => DayPeriod.Matin,
+					< 18 => DayPeriod.ApresMidi,
+					< 21 => DayPeriod.Soir,
+					_    => DayPeriod.Nuit
 				};
 	}
 }
