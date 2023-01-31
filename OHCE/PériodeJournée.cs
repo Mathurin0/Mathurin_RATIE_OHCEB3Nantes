@@ -3,9 +3,9 @@
     public enum DayPeriod
     {
         Defaut,
-        Morning,
-        Afternoon,
-        Evening,
-        Night
+        Matin,
+        ApresMidi,
+        Soir,
+        Nuit
     }
 }
