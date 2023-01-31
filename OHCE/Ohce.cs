@@ -30,14 +30,14 @@ public class Ohce
 
 	public string DireBonjour()
 	{
-		var stringBuilder = new StringBuilder(_langue.Bonjour(_périodeJournée));
+		var stringBuilder = new StringBuilder(_langue.Salutation(_périodeJournée));
 
 		return stringBuilder.ToString();
 	}
 
 	public string DireAurevoir()
 	{
-		var stringBuilder = new StringBuilder(_langue.AuRevoir);
+		var stringBuilder = new StringBuilder(_langue.AuRevoir(_périodeJournée));
 
 		return stringBuilder.ToString();
 	}

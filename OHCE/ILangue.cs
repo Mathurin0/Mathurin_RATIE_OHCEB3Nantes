@@ -3,7 +3,7 @@
     public interface ILangue
     {
         string BienDit { get; }
-        string Bonjour(DayPeriod période);
-        string AuRevoir { get; }
-    }
+        string Salutation(DayPeriod période);
+        string AuRevoir(DayPeriod période);
+	}
 }

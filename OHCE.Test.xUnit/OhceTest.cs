@@ -39,7 +39,7 @@ public class OhceTest
         // ALORS il est renvoyé
         // ET <bienDit> en <langue> est envoyé
         Assert.Contains(
-            palindrome + langue.BienDit, 
+            palindrome + "\n" + langue.BienDit, 
             sortie);
     }
 
@@ -51,10 +51,10 @@ public class OhceTest
 
     private static readonly IEnumerable<DayPeriod> Périodes = new DayPeriod[]
     {
-        DayPeriod.Morning, 
-        DayPeriod.Afternoon, 
-        DayPeriod.Evening, 
-        DayPeriod.Night, 
+        DayPeriod.Matin, 
+        DayPeriod.ApresMidi, 
+        DayPeriod.Soir, 
+        DayPeriod.Nuit, 
         DayPeriod.Defaut
     };
 
@@ -75,28 +75,30 @@ public class OhceTest
             .AyantPourPériodeDeLaJournée(période)
             .Build();
 
-        // QUAND l'app démarre
-        var sortie = ohce.Palindrome(string.Empty);
+        // QUAND on saisis une chaîne
+        var sortie = ohce.DireBonjour();
 
-        // ALORS <bonjour> de cette langue à cette période est envoyé
-        Assert.StartsWith(langue.Bonjour(période), sortie);
+		// ALORS <salutation> de cette langue à cette période est envoyé
+		Assert.StartsWith(langue.Salutation(période), sortie);
     }
 
     [Theory(DisplayName = "ETANT DONNE un utilisateur parlant une langue" +
                           "QUAND l'app se ferme " +
                           "ALORS <auRevoir> dans cette langue est envoyé")]
-    [MemberData(nameof(LanguesSeules))]
-    public void FermetureTest(ILangue langue)
+    [MemberData(nameof(LanguesEtPériodes))]
+    public void FinTest(ILangue langue, DayPeriod période)
     {
-        // ETANT DONNE un utilisateur parlant une langue
-        var ohce = new OhceBuilder()
+		// ETANT DONNE un utilisateur parlant une langue
+		// ET que la période de la journée est <période>
+		var ohce = new OhceBuilder()
             .AyantPourLangue(langue)
-            .Build();
+			.AyantPourPériodeDeLaJournée(période)
+			.Build();
 
-        // QUAND l'app démarre
-        var sortie = ohce.Palindrome(string.Empty);
+		// QUAND on saisis une chaîne
+		var sortie = ohce.DireAurevoir();
 
-        // ALORS <auRevoir> dans cette langue est envoyé
-        Assert.EndsWith(langue.AuRevoir, sortie);
+		// ALORS <auRevoir> dans cette langue est envoyé
+		Assert.EndsWith(langue.AuRevoir(période), sortie);
     }
 }
